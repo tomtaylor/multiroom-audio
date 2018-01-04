@@ -1,0 +1,29 @@
+version: "3.4"
+services:
+  pulseaudio:
+    image: multiroom-server-pulseaudio
+    build: ./pulseaudio
+    volumes:
+      - ./run/snapfifo:/var/run/snapfifo
+      - ./run/pulseserver:/var/run/pulseserver
+
+  snapserver:
+    image: multiroom-server-snapserver
+    build: ./snapserver
+    depends_on:
+      - pulseaudio
+    volumes:
+      - ./run/snapfifo:/var/run/snapfifo
+    ports:
+      - "1704:1704"
+      - "1705:1705"
+
+  librespot:
+    image: multiroom-server-librespot
+    build: ./librespot
+    depends_on:
+      - pulseaudio
+      - snapserver
+    volumes:
+      - ./run/pulseserver:/var/run/pulseserver
+    env_file: ./librespot.env
