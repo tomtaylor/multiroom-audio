@@ -163,7 +163,7 @@ load-module module-filter-apply
 #set-default-sink output
 #set-default-source input
 
-load-module module-pipe-sink file=/var/run/snapfifo/snapfifo.sock sink_name=Snapcast
+load-module module-pipe-sink file=/tmp/snapfifo.sock sink_name=Snapcast
 update-sink-proplist Snapcast device.description=Snapcast
 
-load-module module-native-protocol-unix auth-anonymous=1 auth-cookie-enabled=0 socket=/var/run/pulseserver/pulseserver.sock
+load-module module-native-protocol-tcp auth-anonymous=1 auth-cookie-enabled=0
