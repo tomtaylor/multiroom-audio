@@ -1,17 +1,9 @@
 version: "3.4"
 services:
-  pulseaudio:
-    image: multiroom-server-pulseaudio
-    build: ./pulseaudio
+  multiroom-server:
+    image: multiroom-server
+    build: ./multiroom-server
     ports:
       - "1704:1704"
       - "1705:1705"
-    expose:
-      - "4713"
-
-  librespot:
-    image: multiroom-server-librespot
-    build: ./librespot
-    depends_on:
-      - pulseaudio
     env_file: ./librespot.env
