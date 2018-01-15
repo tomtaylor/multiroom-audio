@@ -2,7 +2,7 @@ version: "3.4"
 services:
   multiroom-server:
     image: multiroom-server
-    build: ./multiroom-server
+    build: ./
     ports:
       - "1704:1704"
       - "1705:1705"

@@ -1,3 +1,3 @@
 [submodule "multiroom-server/librespot"]
-	path = multiroom-server/librespot
+	path = server/librespot
 	url = https://github.com/tomtaylor/librespot.git
